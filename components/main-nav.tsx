@@ -5,7 +5,7 @@ import ToggleMode from './toggle-mode';
 const MainNav = () => {
   return (
     <div className='flex justify-between'>
-      <div className='flex items-center gap-2'>
+      <div className='flex items-center gap-4'>
         <Link href='/'>Dashboard</Link>
         <Link href='/tickets'>Tickets</Link>
         <Link href='/users'>Users</Link>

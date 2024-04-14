@@ -1,10 +1,10 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Roboto_Mono } from 'next/font/google';
 import './globals.css';
 import MainNav from '@/components/main-nav';
 import { ThemeProvider } from '@/components/theme-provider';
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Roboto_Mono({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'Ticket Application',
@@ -32,7 +32,7 @@ export default function RootLayout({
           </nav>
 
           <main className='flex flex-col items-center'>
-            <div className='max-w-6xl w-full'>{children}</div>
+            <div className='max-w-6xl w-full p-6'>{children}</div>
           </main>
         </ThemeProvider>
       </body>

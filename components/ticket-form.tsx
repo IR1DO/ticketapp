@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Form, FormControl, FormField, FormItem, FormLabel } from './ui/form';
 import { ticketSchema } from '@/validation/schema/ticket';
 import { z } from 'zod';
@@ -20,6 +20,8 @@ import { Button } from './ui/button';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
 import { Ticket } from '@prisma/client';
+import { AlertDestructive } from './alert-destructive';
+import { useToast } from './ui/use-toast';
 
 type TicketFormData = z.infer<typeof ticketSchema>;
 
@@ -31,6 +33,7 @@ const TicketForm = ({ ticket }: Props) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState('');
   const router = useRouter();
+  const { toast } = useToast();
 
   const form = useForm<TicketFormData>({ resolver: zodResolver(ticketSchema) });
 
@@ -45,14 +48,23 @@ const TicketForm = ({ ticket }: Props) => {
         await axios.post('/api/tickets', values);
       }
 
-      setIsSubmitting(false);
       router.push('/tickets');
       router.refresh();
+      // setIsSubmitting(false);
     } catch (error) {
-      setError('Unknown error occured.');
+      setError(`${error}`);
       setIsSubmitting(false);
     }
   }
+
+  useEffect(() => {
+    if (error) {
+      toast({
+        variant: 'destructive',
+        description: error,
+      });
+    }
+  }, [error, toast]);
 
   return (
     <div className='rounded-md border w-full p-4'>

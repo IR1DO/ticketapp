@@ -13,6 +13,8 @@ import TicketPriority from '@/components/ticket-priority';
 import Link from 'next/link';
 import { buttonVariants } from '@/components/ui/button';
 import ReactMarkDown from 'react-markdown';
+import { Delete } from 'lucide-react';
+import DeleteBtn from '@/app/api/tickets/[id]/delete-btn';
 
 interface Props {
   ticket: Ticket;
@@ -21,7 +23,7 @@ interface Props {
 const TicketDetail = ({ ticket }: Props) => {
   return (
     <div className='lg:grid lg:grid-cols-5 mx-4'>
-      <Card className='mx-auto mb-4 lg:col-span-4 lg:mr-4 lg:mb-0'>
+      <Card className='mb-4 lg:col-span-4 lg:mr-4 lg:mb-0'>
         <CardHeader>
           <div className='flex gap-2 mb-1'>
             <TicketStatusBadge status={ticket.status} />
@@ -78,14 +80,7 @@ const TicketDetail = ({ ticket }: Props) => {
           Edit
         </Link>
 
-        <Link
-          href={`/tickets/edit/${ticket.id}`}
-          className={`${buttonVariants({
-            variant: 'default',
-          })} lg:h-full lg:flex-1 bg-red-500 hover:bg-red-400 dark:text-white`}
-        >
-          Delete
-        </Link>
+        <DeleteBtn ticketId={ticket.id} />
       </div>
     </div>
   );

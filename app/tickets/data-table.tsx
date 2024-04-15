@@ -9,7 +9,6 @@ import {
   TableRow,
 } from '@/components/ui/table';
 import { Ticket } from '@prisma/client';
-import { Divide } from 'lucide-react';
 import Link from 'next/link';
 import React from 'react';
 

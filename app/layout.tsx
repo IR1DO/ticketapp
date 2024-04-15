@@ -3,6 +3,7 @@ import { Roboto_Mono } from 'next/font/google';
 import './globals.css';
 import MainNav from '@/components/main-nav';
 import { ThemeProvider } from '@/components/theme-provider';
+import { Toaster } from '@/components/ui/toaster';
 
 const inter = Roboto_Mono({ subsets: ['latin'] });
 
@@ -34,6 +35,8 @@ export default function RootLayout({
           <main className='flex flex-col items-center'>
             <div className='max-w-6xl w-full p-6'>{children}</div>
           </main>
+
+          <Toaster />
         </ThemeProvider>
       </body>
     </html>

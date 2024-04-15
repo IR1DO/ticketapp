@@ -23,6 +23,7 @@ const ToggleMode = () => {
     <Button
       variant='outline'
       size='icon'
+      className='rounded-full'
       onClick={() => {
         setTheme(`${dark ? 'light' : 'dark'}`);
       }}

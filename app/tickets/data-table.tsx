@@ -10,6 +10,7 @@ import {
 } from '@/components/ui/table';
 import { Ticket } from '@prisma/client';
 import { Divide } from 'lucide-react';
+import Link from 'next/link';
 import React from 'react';
 
 interface Props {
@@ -34,7 +35,14 @@ const DataTable = ({ tickets }: Props) => {
             {tickets ? (
               tickets.map((ticket) => (
                 <TableRow key={ticket.id} data-href='/'>
-                  <TableCell className='text-left'>{ticket.title}</TableCell>
+                  <TableCell className='text-left'>
+                    <Link
+                      href={`/tickets/${ticket.id}`}
+                      className='hover:underline hover:text-cyan-500'
+                    >
+                      {ticket.title}
+                    </Link>
+                  </TableCell>
                   <TableCell>
                     <TicketStatusBadge status={ticket.status} />
                   </TableCell>

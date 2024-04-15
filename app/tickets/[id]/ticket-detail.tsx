@@ -10,7 +10,7 @@ const TicketDetail = ({ ticket }: Props) => {
     <div>
       <p>{ticket.title}</p>
       <p>{ticket.description}</p>
-      <p>{ticket.status}</p>
+      <p className='text-sm text-red-300'>{ticket.status}</p>
     </div>
   );
 };

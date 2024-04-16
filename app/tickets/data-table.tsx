@@ -18,7 +18,7 @@ interface Props {
 
 const DataTable = ({ tickets }: Props) => {
   return (
-    <div className='w-full mt-5'>
+    <div className='w-full mt-4'>
       <div className='rounded-md sm:border'>
         <Table className='text-center'>
           <TableHeader>

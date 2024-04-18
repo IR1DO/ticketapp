@@ -5,7 +5,7 @@ import MainNav from '@/components/main-nav';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Toaster } from '@/components/ui/toaster';
 
-const inter = Roboto_Mono({ subsets: ['latin'] });
+const roboto_mono = Roboto_Mono({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'Ticket Application',
@@ -19,7 +19,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en'>
-      <body className={inter.className}>
+      <body className={roboto_mono.className}>
         <ThemeProvider
           attribute='class'
           defaultTheme='system'

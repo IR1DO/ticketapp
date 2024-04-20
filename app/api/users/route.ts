@@ -19,7 +19,14 @@ export async function POST(request: NextRequest) {
 
   if (duplicate) {
     return NextResponse.json(
-      { message: 'Duplicate Username' },
+      { message: 'Duplicate username.' },
+      { status: 409 }
+    );
+  }
+
+  if (!body.password) {
+    return NextResponse.json(
+      { message: 'Password is required.' },
       { status: 409 }
     );
   }

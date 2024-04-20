@@ -25,7 +25,7 @@ const DataTable = ({ tickets, searchParams }: Props) => {
       <div className='rounded-md sm:border'>
         <Table className='text-center'>
           <TableHeader>
-            <TableRow>
+            <TableRow className='bg-secondary hover:bg-secondary'>
               <TableHead className='text-left'>
                 <Link href={{ query: { ...searchParams, orderBy: 'title' } }}>
                   Title

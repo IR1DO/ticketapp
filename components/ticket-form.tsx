@@ -27,7 +27,6 @@ import { Button } from './ui/button';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
 import { Ticket } from '@prisma/client';
-import { AlertDestructive } from './alert-destructive';
 import { useToast } from './ui/use-toast';
 
 type TicketFormData = z.infer<typeof ticketSchema>;
@@ -61,7 +60,7 @@ const TicketForm = ({ ticket }: Props) => {
     } catch (error) {
       const err = error as any;
       const errorMessage = err.response?.data?.message;
-      setError(`${error}. ${errorMessage}`);
+      setError(`${error}. Error message: ${errorMessage}`);
       setIsSubmitting(false);
     }
   }

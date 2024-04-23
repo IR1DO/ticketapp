@@ -1,4 +1,4 @@
-import { Ticket } from '@prisma/client';
+import { Ticket, User } from '@prisma/client';
 import React from 'react';
 import {
   Card,
@@ -15,12 +15,14 @@ import { buttonVariants } from '@/components/ui/button';
 import ReactMarkDown from 'react-markdown';
 import { Delete } from 'lucide-react';
 import DeleteBtn from '@/app/api/tickets/[id]/delete-btn';
+import AssignTicket from '@/components/assign-ticket';
 
 interface Props {
   ticket: Ticket;
+  users: User[];
 }
 
-const TicketDetail = ({ ticket }: Props) => {
+const TicketDetail = ({ ticket, users }: Props) => {
   return (
     <div className='lg:grid lg:grid-cols-5 mx-4'>
       <Card className='mb-4 lg:col-span-4 lg:mr-4 lg:mb-0'>
@@ -56,16 +58,22 @@ const TicketDetail = ({ ticket }: Props) => {
         </CardContent>
 
         <CardFooter>
-          <div className='text-teal-500 dark:text-teal-200'>
-            Updated:{' '}
-            {ticket.updatedAt.toLocaleDateString('en-US', {
-              year: '2-digit',
-              month: '2-digit',
-              day: '2-digit',
-              hour: 'numeric',
-              minute: '2-digit',
-              hour12: false,
-            })}
+          <div className='flex w-full justify-between items-center'>
+            <div className='text-teal-500 dark:text-teal-200'>
+              Updated:{' '}
+              {ticket.updatedAt.toLocaleDateString('en-US', {
+                year: '2-digit',
+                month: '2-digit',
+                day: '2-digit',
+                hour: 'numeric',
+                minute: '2-digit',
+                hour12: false,
+              })}
+            </div>
+
+            <div className='w-44'>
+              <AssignTicket ticket={ticket} users={users} />
+            </div>
           </div>
         </CardFooter>
       </Card>

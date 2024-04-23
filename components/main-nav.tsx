@@ -1,8 +1,13 @@
 import Link from 'next/link';
 import React from 'react';
 import ToggleMode from './toggle-mode';
+import { getServerSession } from 'next-auth';
+import options from '@/app/api/auth/[...nextauth]/options';
 
-const MainNav = () => {
+const MainNav = async () => {
+  const session = await getServerSession(options);
+  // console.log(session);
+
   return (
     <div className='flex justify-between'>
       <div className='flex items-center gap-4'>
@@ -12,7 +17,12 @@ const MainNav = () => {
       </div>
 
       <div className='flex items-center gap-2'>
-        <Link href='/'>Logout</Link>
+        {session ? (
+          <Link href='/api/auth/signout?callbackUrl=/'>Logout</Link>
+        ) : (
+          <Link href='/api/auth/signin'>Login</Link>
+        )}
+
         <ToggleMode />
       </div>
     </div>

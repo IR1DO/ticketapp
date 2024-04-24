@@ -3,6 +3,7 @@ import React from 'react';
 import ToggleMode from './toggle-mode';
 import { getServerSession } from 'next-auth';
 import options from '@/app/api/auth/[...nextauth]/options';
+import MainNavLinks from './main-nav-links';
 
 const MainNav = async () => {
   const session = await getServerSession(options);
@@ -10,11 +11,7 @@ const MainNav = async () => {
 
   return (
     <div className='flex justify-between'>
-      <div className='flex items-center gap-4'>
-        <Link href='/'>Dashboard</Link>
-        <Link href='/tickets'>Tickets</Link>
-        <Link href='/users'>Users</Link>
-      </div>
+      <MainNavLinks role={session?.user.role} />
 
       <div className='flex items-center gap-2'>
         {session ? (

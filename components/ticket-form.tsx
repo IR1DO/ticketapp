@@ -59,7 +59,8 @@ const TicketForm = ({ ticket }: Props) => {
       // setIsSubmitting(false);
     } catch (error) {
       const err = error as any;
-      const errorMessage = err.response?.data?.message;
+      const errorMessage =
+        err.response?.data?.message || err.response?.data?.error;
       setError(`${error}. Error message: ${errorMessage}`);
       setIsSubmitting(false);
     }
